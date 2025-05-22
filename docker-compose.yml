@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  central_catalog:
+    build: ./central_catalog_service
+    ports:
+      - "8000:80"
+
+  dagster:
+    build: ./dagster_project
+    ports:
+      - "3000:3000"
+    depends_on:
+      - central_catalog
